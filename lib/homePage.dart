@@ -4,39 +4,27 @@ import 'package:flutter/material.dart';
 class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() {
-    
     return HomePageState();
   }
 }
 
 class HomePageState extends State<HomePage> {
   var number = 0;
-
+  bool isDarkTheme = false;
   VoidCallback? get onPressed => null;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      
+      appBar: AppBar(title: const Text('This is a appSidebar sample!')),
 
-      body: Container(
-        child: Center(
-            child: Container( // Temos widgets singleRender e multirender, para desenhar elementos sobrepostos nesse exemplo usamos o single render Center, mas podemos usar também: Flex, align, Transform..
-              height: 200,
-              width: 200,
-              color: Colors.black,
-              child: Center(
-                child: Container(
-                  height: 100,
-                  width: 100,
-                  color: Colors.white,
-                ),
-            
-            ),
-            
-          ),
-        ),
-      ),
+    
+
+      body: Container(child: Center(child: Switch(value: isDarkTheme, onChanged: (value) {
+        setState(() {
+          isDarkTheme = false
+        });
+      }}),)),
+
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
@@ -45,6 +33,18 @@ class HomePageState extends State<HomePage> {
           });
         },
       ),
+
+  
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.house), label: 'Home'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.verified_user),
+            label: 'User',
+          ),
+        ],
+      ),
+
     ); // Componente mais completo, temos quase um app inteiro pronto.
   }
 }

@@ -10,8 +10,11 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // primeiro widget para iniciar a aplicação
-      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyan, primary: Colors.cyan)),
+      theme: ThemeData(
+        primarySwatch: Colors.blueGrey,brightness: Brightness.dark
+      ),
       home: HomePage(),
+      
     );
   }
 }
